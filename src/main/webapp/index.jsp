@@ -2,11 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>JEE Unit 8.1 Homework</title>
+    <title>To do list</title>
 </head>
-<body>
-<h2>HTTP Header Requset Example</h2>
 
+<body>
+
+<div style="background-color:black; color:lightgrey; padding: 20px;">
+    <p>My Tasks</p>
+</div>
 
 <table width="100%" border="1" align="center">
     <tr bgcolor="#949494">
