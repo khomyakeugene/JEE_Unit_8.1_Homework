@@ -3,7 +3,7 @@ package com.company.todo.model;
 /**
  * Created by Yevhen on 10.07.2016.
  */
-public class TaskCategory {
+public class TaskItemCategory {
     private int taskCategoryId;
     private String name;
 
@@ -26,9 +26,9 @@ public class TaskCategory {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof TaskCategory)) return false;
+        if (!(o instanceof TaskItemCategory)) return false;
 
-        TaskCategory that = (TaskCategory) o;
+        TaskItemCategory that = (TaskItemCategory) o;
 
         return taskCategoryId == that.taskCategoryId && (name != null ? name.equals(that.name) : that.name == null);
 
@@ -43,7 +43,7 @@ public class TaskCategory {
 
     @Override
     public String toString() {
-        return "TaskCategory{" +
+        return "TaskItemCategory{" +
                 "taskCategoryId=" + taskCategoryId +
                 ", name='" + name + '\'' +
                 '}';

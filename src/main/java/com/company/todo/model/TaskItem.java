@@ -3,11 +3,11 @@ package com.company.todo.model;
 /**
  * Created by Yevhen on 10.07.2016.
  */
-public class Task {
+public class TaskItem {
     private int taskId;
     private String name;
     private boolean complete;
-    private TaskCategory taskCategory = new TaskCategory();
+    private TaskItemCategory taskItemCategory = new TaskItemCategory();
 
     public int getTaskId() {
         return taskId;
@@ -33,24 +33,24 @@ public class Task {
         this.complete = complete;
     }
 
-    public TaskCategory getTaskCategory() {
-        return taskCategory;
+    public TaskItemCategory getTaskItemCategory() {
+        return taskItemCategory;
     }
 
-    public void setTaskCategory(TaskCategory taskCategory) {
-        this.taskCategory = taskCategory;
+    public void setTaskItemCategory(TaskItemCategory taskItemCategory) {
+        this.taskItemCategory = taskItemCategory;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Task)) return false;
+        if (!(o instanceof TaskItem)) return false;
 
-        Task task = (Task) o;
+        TaskItem taskItem = (TaskItem) o;
 
-        return taskId == task.taskId && complete == task.complete && (name != null ? name.equals(task.name) :
-                task.name == null && (taskCategory != null ? taskCategory.equals(task.taskCategory) :
-                        task.taskCategory == null));
+        return taskId == taskItem.taskId && complete == taskItem.complete && (name != null ? name.equals(taskItem.name) :
+                taskItem.name == null && (taskItemCategory != null ? taskItemCategory.equals(taskItem.taskItemCategory) :
+                        taskItem.taskItemCategory == null));
 
     }
 
@@ -59,17 +59,17 @@ public class Task {
         int result = taskId;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (complete ? 1 : 0);
-        result = 31 * result + (taskCategory != null ? taskCategory.hashCode() : 0);
+        result = 31 * result + (taskItemCategory != null ? taskItemCategory.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "TaskItem{" +
                 "taskId=" + taskId +
                 ", name='" + name + '\'' +
                 ", complete=" + complete +
-                ", taskCategory=" + taskCategory +
+                ", taskItemCategory=" + taskItemCategory +
                 '}';
     }
 }
