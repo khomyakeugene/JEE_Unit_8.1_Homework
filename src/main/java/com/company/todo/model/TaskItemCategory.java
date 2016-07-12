@@ -4,15 +4,15 @@ package com.company.todo.model;
  * Created by Yevhen on 10.07.2016.
  */
 public class TaskItemCategory {
-    private int taskCategoryId;
+    private int taskItemCategoryId;
     private String name;
 
-    public int getTaskCategoryId() {
-        return taskCategoryId;
+    public int getTaskItemCategoryId() {
+        return taskItemCategoryId;
     }
 
-    public void setTaskCategoryId(int taskCategoryId) {
-        this.taskCategoryId = taskCategoryId;
+    public void setTaskItemCategoryId(int taskItemCategoryId) {
+        this.taskItemCategoryId = taskItemCategoryId;
     }
 
     public String getName() {
@@ -30,13 +30,13 @@ public class TaskItemCategory {
 
         TaskItemCategory that = (TaskItemCategory) o;
 
-        return taskCategoryId == that.taskCategoryId && (name != null ? name.equals(that.name) : that.name == null);
+        return taskItemCategoryId == that.taskItemCategoryId && (name != null ? name.equals(that.name) : that.name == null);
 
     }
 
     @Override
     public int hashCode() {
-        int result = taskCategoryId;
+        int result = taskItemCategoryId;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
@@ -44,7 +44,7 @@ public class TaskItemCategory {
     @Override
     public String toString() {
         return "TaskItemCategory{" +
-                "taskCategoryId=" + taskCategoryId +
+                "taskItemCategoryId=" + taskItemCategoryId +
                 ", name='" + name + '\'' +
                 '}';
     }

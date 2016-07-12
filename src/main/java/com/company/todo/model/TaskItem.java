@@ -4,17 +4,17 @@ package com.company.todo.model;
  * Created by Yevhen on 10.07.2016.
  */
 public class TaskItem {
-    private int taskId;
+    private int taskItemId;
     private String name;
     private boolean complete;
     private TaskItemCategory taskItemCategory = new TaskItemCategory();
 
-    public int getTaskId() {
-        return taskId;
+    public int getTaskItemId() {
+        return taskItemId;
     }
 
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
+    public void setTaskItemId(int taskItemId) {
+        this.taskItemId = taskItemId;
     }
 
     public String getName() {
@@ -48,7 +48,7 @@ public class TaskItem {
 
         TaskItem taskItem = (TaskItem) o;
 
-        return taskId == taskItem.taskId && complete == taskItem.complete && (name != null ? name.equals(taskItem.name) :
+        return taskItemId == taskItem.taskItemId && complete == taskItem.complete && (name != null ? name.equals(taskItem.name) :
                 taskItem.name == null && (taskItemCategory != null ? taskItemCategory.equals(taskItem.taskItemCategory) :
                         taskItem.taskItemCategory == null));
 
@@ -56,7 +56,7 @@ public class TaskItem {
 
     @Override
     public int hashCode() {
-        int result = taskId;
+        int result = taskItemId;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (complete ? 1 : 0);
         result = 31 * result + (taskItemCategory != null ? taskItemCategory.hashCode() : 0);
@@ -66,7 +66,7 @@ public class TaskItem {
     @Override
     public String toString() {
         return "TaskItem{" +
-                "taskId=" + taskId +
+                "taskItemId=" + taskItemId +
                 ", name='" + name + '\'' +
                 ", complete=" + complete +
                 ", taskItemCategory=" + taskItemCategory +
