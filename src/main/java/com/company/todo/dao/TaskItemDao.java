@@ -11,7 +11,7 @@ public interface TaskItemDao {
     /**
      * @return A list of TaskItems
      */
-    public List<TaskItem> readTaskItems();
+    public List<TaskItem> readTaskItemList();
 
     /**
      * @param taskItem
@@ -20,22 +20,22 @@ public interface TaskItemDao {
     public TaskItem createTaskItem(TaskItem taskItem);
 
     /**
-     * @param id
+     * @param taskItemId
      * @return the TaskItem
      */
     public TaskItem readTaskItem(int taskItemId);
 
     /**
-     * @param id
+     * @param taskItemId
      * @return the TaskItem
      */
-    public TaskItem updateTodoItem(String id, boolean isComplete);
+    public TaskItem updateTaskItem(int taskItemId, boolean isComplete);
 
     /**
      *
-     * @param id
+     * @param taskItemId
      * @return whether the delete was successful.
      */
-    public boolean deleteTodoItem(String id);
+    public boolean deleteTaskItem(int taskItemId);
 
 }
