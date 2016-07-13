@@ -58,6 +58,8 @@ public class HttpStubTaskItemDao implements TaskItemDao {
 
     @Override
     public List<TaskItem> readTaskItemList() {
+        // Todo read from ServletContext
+
         if (taskItemList == null) {
             taskItemList = new ArrayList<>();
         }
