@@ -4,28 +4,34 @@ import com.company.todo.dao.TaskItemDao;
 import com.company.todo.model.TaskItem;
 
 import javax.servlet.ServletContext;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Created by Yevhen on 13.07.2016.
  */
 public class HttpStubTaskItemDao implements TaskItemDao {
+    private static final String TASK_ITEM_LIST_VAR_NAME = "taskItemList";
+
     private ServletContext servletContext;
-    private ArrayList<TaskItem> taskItemList;
 
     public void setServletContext(ServletContext servletContext) {
         this.servletContext = servletContext;
     }
 
+    private Object getAttribute(String attributeName) {
+        return servletContext.getAttribute(attributeName);
+    }
+
+    private void setAttribute(String attributeName, Object attributeValue) {
+        servletContext.setAttribute(attributeName, attributeValue);
+    }
+
     private int generateTaskId() {
         int result = 1;
 
-        List<TaskItem> taskItemList = readTaskItemList();
         // Get max present id
-        Optional<TaskItem> taskItemOptional = taskItemList.stream().max(Comparator.comparing(TaskItem::getTaskItemId));
+        Optional<TaskItem> taskItemOptional =
+                readTaskItemList().stream().max(Comparator.comparing(TaskItem::getTaskItemId));
         if (taskItemOptional.isPresent()) {
             result = taskItemOptional.get().getTaskItemId() + 1;
         }
@@ -33,10 +39,17 @@ public class HttpStubTaskItemDao implements TaskItemDao {
         return result;
     }
 
+    private void saveOrUpdate(TaskItem taskItem) {
+        servletContext.
+                getAttribute(TASK_ITEM_LIST_VAR_NAME);
+
+        readTaskItemList().add(taskItem);
+    }
+
     @Override
     public TaskItem createTaskItem(TaskItem taskItem) {
         taskItem.setTaskItemId(generateTaskId());
-        readTaskItemList().add(taskItem);
+        saveOrUpdate(taskItem);
 
         return taskItem;
     }
@@ -58,12 +71,6 @@ public class HttpStubTaskItemDao implements TaskItemDao {
 
     @Override
     public List<TaskItem> readTaskItemList() {
-        // Todo read from ServletContext
-
-        if (taskItemList == null) {
-            taskItemList = new ArrayList<>();
-        }
-
-        return taskItemList;
+        return (List<TaskItem>)getAttribute(TASK_ITEM_LIST_VAR_NAME);
     }
 }
