@@ -10,7 +10,7 @@ import com.company.todo.model.TaskItemCategory;
 public class HttpStubTaskItemCategoryDao extends HttpStubUniqueNameDao<TaskItemCategory>
         implements TaskItemCategoryDao {
     @Override
-    public TaskItemCategory saveTaskItemCategoty(String name) {
+    public TaskItemCategory saveTaskItemCategory(String name) {
         return saveOrUpdate(name);
     }
 }

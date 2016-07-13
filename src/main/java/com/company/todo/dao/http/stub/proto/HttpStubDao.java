@@ -6,6 +6,7 @@ import com.company.util.DataIntegrityException;
 import javax.servlet.ServletContext;
 import java.util.Optional;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * Created by Yevhen on 13.07.2016.
@@ -21,11 +22,13 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
     }
 
     private Object getAttribute(String attributeName) {
-        return servletContext.getAttribute(attributeName);
+        return (servletContext == null) ? null : servletContext.getAttribute(attributeName);
     }
 
     private void setAttribute(String attributeName, Object attributeValue) {
-        servletContext.setAttribute(attributeName, attributeValue);
+        if (servletContext != null) {
+            servletContext.setAttribute(attributeName, attributeValue);
+        }
     }
 
     private String getEntitySetVariableName() {
@@ -50,6 +53,9 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
         if (dataItem != null) {
             SortedSet<T> dataItemSet = readDataItemSet();
 
+            if (dataItemSet == null) {
+                dataItemSet = new TreeSet<>();
+            }
             if (!dataItemSet.add(dataItem)) {
                 int dataItemId = dataItem.getId();
                 T oldDataItem = readDataItem(dataItemId);

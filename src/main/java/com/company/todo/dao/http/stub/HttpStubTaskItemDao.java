@@ -26,7 +26,7 @@ public class HttpStubTaskItemDao extends HttpStubDao<TaskItem> implements TaskIt
 
     @Override
     public TaskItem createTaskItem(TaskItem taskItem) {
-        taskItem.setTaskItemCategory(taskItemCategoryDao.saveTaskItemCategoty(
+        taskItem.setTaskItemCategory(taskItemCategoryDao.saveTaskItemCategory(
                 taskItem.getTaskItemCategory().getName()));
 
         return createDataItem(taskItem);

@@ -2,9 +2,13 @@ package com.company.todo.dao;
 
 import com.company.todo.model.TaskItemCategory;
 
+import javax.servlet.ServletContext;
+
 /**
  * Created by Yevhen on 13.07.2016.
  */
 public interface TaskItemCategoryDao {
-    TaskItemCategory saveTaskItemCategoty(String name);
+    void setServletContext(ServletContext servletContext);
+
+    TaskItemCategory saveTaskItemCategory(String name);
 }
