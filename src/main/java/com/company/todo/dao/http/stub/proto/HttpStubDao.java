@@ -47,21 +47,23 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
     }
 
     private T saveOrUpdate(T dataItem) {
-        SortedSet<T> dataItemSet = readDataItemSet();
+        if (dataItem != null) {
+            SortedSet<T> dataItemSet = readDataItemSet();
 
-        if (!dataItemSet.add(dataItem)) {
-            int dataItemId = dataItem.getId();
-            T oldDataItem = readDataItem(dataItemId);
-            if (oldDataItem == null) {
-                throw new DataIntegrityException(String.format(CANNOT_FIND_DATA_ITEM_PATTERN, getEntityName(),
-                        dataItemId));
-            } else {
-                dataItemSet.remove(oldDataItem);
-                dataItemSet.add(dataItem);
+            if (!dataItemSet.add(dataItem)) {
+                int dataItemId = dataItem.getId();
+                T oldDataItem = readDataItem(dataItemId);
+                if (oldDataItem == null) {
+                    throw new DataIntegrityException(String.format(CANNOT_FIND_DATA_ITEM_PATTERN, getEntityName(),
+                            dataItemId));
+                } else {
+                    dataItemSet.remove(oldDataItem);
+                    dataItemSet.add(dataItem);
+                }
             }
-        }
 
-        saveDataItemSet(dataItemSet);
+            saveDataItemSet(dataItemSet);
+        }
 
         return dataItem;
     }

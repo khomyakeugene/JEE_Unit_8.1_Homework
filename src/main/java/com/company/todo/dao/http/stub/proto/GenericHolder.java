@@ -24,4 +24,17 @@ public class GenericHolder<T> {
     protected String getEntityName() {
         return getEntityClass().getName();
     }
+
+    protected T newObject() {
+        Class<? extends T> entityClass = getEntityClass();
+
+        T object;
+        try {
+            object = (T) Class.forName(entityClass.getName()).newInstance();
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return object;
+    }
 }

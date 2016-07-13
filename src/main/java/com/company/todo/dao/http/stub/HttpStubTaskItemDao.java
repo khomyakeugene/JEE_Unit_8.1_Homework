@@ -4,6 +4,7 @@ import com.company.todo.dao.TaskItemDao;
 import com.company.todo.dao.http.stub.proto.HttpStubDao;
 import com.company.todo.model.TaskItem;
 
+import javax.servlet.ServletContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,23 @@ import java.util.List;
  * Created by Yevhen on 13.07.2016.
  */
 public class HttpStubTaskItemDao extends HttpStubDao<TaskItem> implements TaskItemDao {
+    private HttpStubTaskItemCategoryDao taskItemCategoryDao;
+
+    public void setTaskItemCategoryDao(HttpStubTaskItemCategoryDao taskItemCategoryDao) {
+        this.taskItemCategoryDao = taskItemCategoryDao;
+    }
+
+    @Override
+    public void setServletContext(ServletContext servletContext) {
+        super.setServletContext(servletContext);
+        taskItemCategoryDao.setServletContext(servletContext);
+    }
 
     @Override
     public TaskItem createTaskItem(TaskItem taskItem) {
+        taskItem.setTaskItemCategory(taskItemCategoryDao.saveTaskItemCategoty(
+                taskItem.getTaskItemCategory().getName()));
+
         return createDataItem(taskItem);
     }
 
