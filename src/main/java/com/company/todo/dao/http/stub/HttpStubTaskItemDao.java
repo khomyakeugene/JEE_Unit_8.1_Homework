@@ -5,7 +5,6 @@ import com.company.todo.dao.http.stub.proto.HttpStubDao;
 import com.company.todo.model.TaskItem;
 
 import javax.servlet.ServletContext;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,6 +54,6 @@ public class HttpStubTaskItemDao extends HttpStubDao<TaskItem> implements TaskIt
 
     @Override
     public List<TaskItem> readTaskItemList() {
-        return new ArrayList<>(readDataItemSet());
+        return readDataItemList();
     }
 }

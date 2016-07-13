@@ -1,12 +1,16 @@
 package com.company.todo.dao.http.stub;
 
 import com.company.todo.dao.TaskItemCategoryDao;
+import com.company.todo.model.TaskItemCategory;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.mock.web.MockServletContext;
+
+import static org.junit.Assert.assertTrue;
+
 
 /**
  * Created by Yevhen on 13.07.2016.
@@ -34,8 +38,9 @@ public class HttpStubTaskItemCategoryDaoTest {
     public void saveTaskItemCategory() throws Exception {
         String taskItemCategoryName = Util.getRandomString();
 
-        taskItemCategoryDao.saveTaskItemCategory(taskItemCategoryName);
-
+        TaskItemCategory taskItemCategory =
+                taskItemCategoryDao.saveTaskItemCategory(taskItemCategoryName);
+        assertTrue(taskItemCategoryDao.readTaskItemCategoryList().size() == 1);
+        assertTrue(taskItemCategoryDao.readTaskItemCategoryList().get(0).equals(taskItemCategory));
     }
-
 }

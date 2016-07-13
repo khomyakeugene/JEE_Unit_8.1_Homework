@@ -4,9 +4,7 @@ import com.company.todo.model.proto.DataItem;
 import com.company.util.DataIntegrityException;
 
 import javax.servlet.ServletContext;
-import java.util.Optional;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by Yevhen on 13.07.2016.
@@ -37,6 +35,10 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
 
     protected SortedSet<T> readDataItemSet() {
         return (SortedSet<T>)getAttribute(getEntitySetVariableName());
+    }
+
+    protected List<T> readDataItemList() {
+        return new ArrayList<>(readDataItemSet());
     }
 
     private void saveDataItemSet(SortedSet<T> sortedSet) {

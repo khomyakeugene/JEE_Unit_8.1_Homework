@@ -4,6 +4,8 @@ import com.company.todo.dao.TaskItemCategoryDao;
 import com.company.todo.dao.http.stub.proto.HttpStubUniqueNameDao;
 import com.company.todo.model.TaskItemCategory;
 
+import java.util.List;
+
 /**
  * Created by Yevhen on 13.07.2016.
  */
@@ -12,5 +14,10 @@ public class HttpStubTaskItemCategoryDao extends HttpStubUniqueNameDao<TaskItemC
     @Override
     public TaskItemCategory saveTaskItemCategory(String name) {
         return saveOrUpdate(name);
+    }
+
+    @Override
+    public List<TaskItemCategory> readTaskItemCategoryList() {
+        return readDataItemList();
     }
 }
