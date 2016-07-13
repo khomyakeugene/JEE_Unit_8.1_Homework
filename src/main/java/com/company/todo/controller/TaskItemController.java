@@ -1,13 +1,13 @@
-package com.company.todo.dao;
+package com.company.todo.controller;
 
 import com.company.todo.model.TaskItem;
 
 import java.util.List;
 
 /**
- * Created by Yevhen on 12.07.2016.
+ * Created by Yevhen on 13.07.2016.
  */
-public interface TaskItemDao {
+public interface TaskItemController {
     TaskItem createTaskItem(TaskItem taskItem);
 
     TaskItem readTaskItem(int taskItemId);
