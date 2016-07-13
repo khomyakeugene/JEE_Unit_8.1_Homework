@@ -6,6 +6,7 @@ import com.company.todo.model.TaskItem;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.servlet.ServletContext;
 import java.util.List;
 
 /**
@@ -14,8 +15,9 @@ import java.util.List;
 public class TaskItemControllerImpl implements TaskItemController {
     private final static String TODO_CONTROLLER_CONTEXT_NAME = "todo-controller-context.xml";
 
-    private TaskItemDao taskItemDao;
     private static TaskItemController taskItemController;
+
+    private TaskItemDao taskItemDao;
 
     public static TaskItemController getInstance() {
         if (taskItemController == null) {
@@ -29,6 +31,11 @@ public class TaskItemControllerImpl implements TaskItemController {
 
     public void setTaskItemDao(TaskItemDao taskItemDao) {
         this.taskItemDao = taskItemDao;
+    }
+
+    @Override
+    public void setServletContext(ServletContext servletContext) {
+        taskItemDao.setServletContext(servletContext);
     }
 
     @Override
