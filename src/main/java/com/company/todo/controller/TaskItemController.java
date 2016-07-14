@@ -19,5 +19,7 @@ public interface TaskItemController {
 
     boolean delTaskItem(int taskItemId);
 
+    boolean delTaskItem(TaskItem taskItem);
+
     List<TaskItem> findAllTaskItems();
 }

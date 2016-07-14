@@ -33,7 +33,7 @@ public class HttpStubTaskItemDao extends HttpStubDao<TaskItem> implements TaskIt
 
     @Override
     public TaskItem findTaskItemById(int taskItemId) {
-        return readDataItem(taskItemId);
+        return findDataItem(taskItemId);
     }
 
     @Override

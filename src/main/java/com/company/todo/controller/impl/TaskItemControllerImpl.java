@@ -1,6 +1,7 @@
 package com.company.todo.controller.impl;
 
 import com.company.todo.controller.TaskItemController;
+import com.company.todo.controller.impl.proto.Controller;
 import com.company.todo.dao.TaskItemDao;
 import com.company.todo.model.TaskItem;
 import org.springframework.context.ApplicationContext;
@@ -12,7 +13,9 @@ import java.util.List;
 /**
  * Created by Yevhen on 13.07.2016.
  */
-public class TaskItemControllerImpl implements TaskItemController {
+public class TaskItemControllerImpl extends Controller implements TaskItemController {
+    private final static String IT_IS_PROHIBITED_TO_DELETE_UNCOMPLETED_TASK_PATTERN =
+            "It is prohibited to delete uncompleted task with id <%d>";
     private final static String TODO_CONTROLLER_CONTEXT_NAME = "todo-controller-context.xml";
 
     private static TaskItemController taskItemController;
@@ -55,7 +58,24 @@ public class TaskItemControllerImpl implements TaskItemController {
 
     @Override
     public boolean delTaskItem(int taskItemId) {
-        return taskItemDao.delTaskItem(taskItemId);
+        boolean result = false;
+
+        TaskItem taskItem = taskItemDao.findTaskItemById(taskItemId);
+        if (taskItem != null) {
+            if (taskItem.isComplete()) {
+                result = taskItemDao.delTaskItem(taskItemId);
+            } else {
+                throwDataIntegrityException(String.format(
+                        IT_IS_PROHIBITED_TO_DELETE_UNCOMPLETED_TASK_PATTERN, taskItemId));
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public boolean delTaskItem(TaskItem taskItem) {
+        return (taskItem != null) && delTaskItem(taskItem.getTaskItemId());
     }
 
     @Override

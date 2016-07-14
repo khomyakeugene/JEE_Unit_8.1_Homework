@@ -43,16 +43,24 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
         return (dataItemSet != null && !dataItemSet.isEmpty()) ? dataItemSet.last().getId() + 1 : 1;
     }
 
+    @Override
+    protected T newObject() {
+        T result = super.newObject();
+        result.setId(generateId());
+
+        return result;
+    }
+
     private T saveOrUpdate(T dataItem) {
         if (dataItem != null) {
+            int dataItemId = dataItem.getId();
+            if (dataItemId <= 0) {
+                dataItem.setId(generateId());
+            }
             SortedSet<T> dataItemSet = readDataItemSet();
 
-            if (dataItemSet == null) {
-                dataItemSet = new TreeSet<>();
-            }
             if (!dataItemSet.add(dataItem)) {
-                int dataItemId = dataItem.getId();
-                T oldDataItem = readDataItem(dataItemId);
+                T oldDataItem = findDataItem(dataItemId);
                 if (oldDataItem == null) {
                     throw new DataIntegrityException(String.format(CANNOT_FIND_DATA_ITEM_PATTERN, getEntityName(),
                             dataItemId));
@@ -66,6 +74,13 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
         }
 
         return dataItem;
+    }
+
+    protected T saveOrUpdate(String name) {
+        T dataItem = newObject();
+        dataItem.setName(name);
+
+        return saveOrUpdate(dataItem);
     }
 
     protected SortedSet<T> readDataItemSet() {
@@ -84,7 +99,7 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
         return saveOrUpdate(dataItem);
     }
 
-    protected T readDataItem(int dataItemId) {
+    protected T findDataItem(int dataItemId) {
         T result = null;
 
         SortedSet<T> dataItemSet = readDataItemSet();
@@ -107,7 +122,7 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
 
         SortedSet<T> dataItemSet = readDataItemSet();
         if (dataItemSet != null) {
-            T dataItem = readDataItem(dataItemId);
+            T dataItem = findDataItem(dataItemId);
             if (dataItem != null) {
                 result = dataItemSet.remove(dataItem);
                 saveDataItemSet(dataItemSet);

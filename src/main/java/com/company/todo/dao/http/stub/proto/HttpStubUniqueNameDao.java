@@ -21,9 +21,7 @@ public class HttpStubUniqueNameDao<T extends DataItem> extends HttpStubDao<T> {
             }
         }
         if (result == null) {
-            result = newObject();
-            result .setName(name);
-            result = addDataItem(result);
+            result = super.saveOrUpdate(name);
         }
 
         return result;
