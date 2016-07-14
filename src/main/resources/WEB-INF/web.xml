@@ -23,6 +23,6 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>updateTasksServlet</servlet-name>
-        <url-pattern>update_tasks</url-pattern>
+        <url-pattern>/update_tasks</url-pattern>
     </servlet-mapping>
 </web-app>
