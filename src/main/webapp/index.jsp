@@ -23,8 +23,8 @@
             <form class="form-horizontal" role="form" action="update_tasks" method="post">
                 <table width="100%" border="1" align="center">
                     <tr bgcolor="#949494">
-                        <th>Header Name</th>
-                        <th>Header Value</th>
+                        <th>Task name</th>
+                        <th>Task category name</th>
                     </tr>
                     <c:forEach items="${header.keySet()}" var="headerName">
                         <tr>
