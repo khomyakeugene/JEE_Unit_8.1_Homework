@@ -32,6 +32,15 @@ public class HttpStubTaskItemDao extends HttpStubDao<TaskItem> implements TaskIt
     }
 
     @Override
+    public TaskItem addTaskItem(String taskName, String taskCategoryName) {
+        TaskItem taskItem = new TaskItem();
+        taskItem.setName(taskName);
+        taskItem.getTaskItemCategory().setName(taskCategoryName);
+
+        return addTaskItem(taskItem);
+    }
+
+    @Override
     public TaskItem findTaskItemById(int taskItemId) {
         return findDataItem(taskItemId);
     }

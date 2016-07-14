@@ -47,6 +47,11 @@ public class TaskItemControllerImpl extends Controller implements TaskItemContro
     }
 
     @Override
+    public TaskItem addTaskItem(String taskName, String taskCategoryName) {
+        return taskItemDao.addTaskItem(taskName, taskCategoryName);
+    }
+
+    @Override
     public TaskItem findTaskItemById(int taskItemId) {
         return taskItemDao.findTaskItemById(taskItemId);
     }

@@ -20,7 +20,7 @@
     <!-- The Task List -->
     <div class = "todoList">
         <div class="todoUpdatePanel">
-            <form class="form-horizontal" role="form" action="do_actions" method="post">
+            <form class="form-horizontal" role="form" action="update_tasks" method="post">
                 <table width="100%" border="1" align="center">
                     <tr bgcolor="#949494">
                         <th>Header Name</th>
@@ -44,7 +44,7 @@
 
     <!-- Item Input Form -->
     <div class="taskItemData">
-        <form class="form-horizontal" role="form" action="do_actions" method="post">
+        <form class="form-horizontal" role="form" action="add_task" method="post">
             <div class="form-group">
                 <label for="inputItemName" class="col-sm-2">Task Name</label>
                 <div class="col-sm-10">

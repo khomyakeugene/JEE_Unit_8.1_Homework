@@ -44,10 +44,7 @@ public class TaskItemControllerImplTest {
         secondTaskItem.getTaskItemCategory().setName(Util.getRandomString());
         secondTaskItem = taskItemController.addTaskItem(secondTaskItem);
 
-        TaskItem thirdTaskItem = new TaskItem();
-        thirdTaskItem.setName(Util.getRandomString());
-        thirdTaskItem.getTaskItemCategory().setName(Util.getRandomString());
-        thirdTaskItem = taskItemController.addTaskItem(thirdTaskItem);
+        TaskItem thirdTaskItem = taskItemController.addTaskItem(Util.getRandomString(), Util.getRandomString());
 
         int firstTaskItemId = firstTaskItem.getTaskItemId();
         int secondTaskItemId = secondTaskItem.getTaskItemId();

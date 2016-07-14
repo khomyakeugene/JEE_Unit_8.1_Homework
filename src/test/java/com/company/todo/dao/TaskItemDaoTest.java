@@ -57,14 +57,12 @@ public abstract class TaskItemDaoTest {
         secondTaskItem.getTaskItemCategory().setName(Util.getRandomString());
         secondTaskItem = taskItemDao.addTaskItem(secondTaskItem);
 
-        TaskItem thirdTaskItem = new TaskItem();
-        thirdTaskItem.setName(Util.getRandomString());
-        thirdTaskItem.getTaskItemCategory().setName(Util.getRandomString());
-        thirdTaskItem = taskItemDao.addTaskItem(thirdTaskItem);
+        TaskItem thirdTaskItem = taskItemDao.addTaskItem(Util.getRandomString(), Util.getRandomString());
 
         int firstTaskItemId = firstTaskItem.getTaskItemId();
         int secondTaskItemId = secondTaskItem.getTaskItemId();
         int thirdTaskItemId = thirdTaskItem.getTaskItemId();
+
         assertTrue(firstTaskItemId != secondTaskItemId && firstTaskItemId != thirdTaskItemId &&
                 secondTaskItemId != thirdTaskItemId);
 

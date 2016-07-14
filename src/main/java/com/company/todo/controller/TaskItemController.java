@@ -13,6 +13,8 @@ public interface TaskItemController {
 
     TaskItem addTaskItem(TaskItem taskItem);
 
+    TaskItem addTaskItem(String taskName, String taskCategoryName);
+
     TaskItem findTaskItemById(int taskItemId);
 
     TaskItem updTaskItem(int taskItemId, boolean isComplete);

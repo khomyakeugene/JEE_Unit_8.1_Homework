@@ -8,8 +8,7 @@ import java.io.IOException;
 /**
  * Created by Yevhen on 14.07.2016.
  */
-public abstract class ReturnToRefererPageServlet extends ServletProto {
-    private static final char URL_DELIMITER = '/';
+public abstract class CallerPageReturnServlet extends ServletProto {
     private static final String REFERER_HEADER_NAME = "referer";
 
     protected abstract void responseAction(HttpServletRequest request, HttpServletResponse response)

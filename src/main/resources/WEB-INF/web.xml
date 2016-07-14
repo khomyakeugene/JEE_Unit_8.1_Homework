@@ -9,12 +9,20 @@
     </description>
 
     <servlet>
-        <servlet-name>taskItemServlet</servlet-name>
-        <servlet-class>com.company.todo.servlets.TaskItemServlet</servlet-class>
+        <servlet-name>addTaskItemServlet</servlet-name>
+        <servlet-class>com.company.todo.servlets.AddTaskItemServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateTasksServlet</servlet-name>
+        <servlet-class>com.company.todo.servlets.UpdateTasksServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>taskItemServlet</servlet-name>
-        <url-pattern>/do_actions</url-pattern>
+        <servlet-name>addTaskItemServlet</servlet-name>
+        <url-pattern>/add_task</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateTasksServlet</servlet-name>
+        <url-pattern>update_tasks</url-pattern>
     </servlet-mapping>
 </web-app>
