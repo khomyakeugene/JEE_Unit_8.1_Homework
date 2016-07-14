@@ -19,27 +19,38 @@
 
     <!-- The Task List -->
     <div class = "todoList">
-        <!-- Update Button -->
         <div class="todoUpdatePanel">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" action="do_actions" method="post">
+                <table width="100%" border="1" align="center">
+                    <tr bgcolor="#949494">
+                        <th>Header Name</th>
+                        <th>Header Value</th>
+                    </tr>
+                    <c:forEach items="${header.keySet()}" var="headerName">
+                        <tr>
+                            <td><c:out value="${headerName}"/></td>
+                            <td><c:out value="${header.get(headerName)}"/></td>
+                        </tr>
+                    </c:forEach>
+                </table>
+
+                <!-- Update Button -->
                 <button class="button blue">Update Tasks</button>
             </form>
         </div>
-
     </div>
 
     <hr/>
 
     <!-- Item Input Form -->
-    <div class="todoForm">
-        <form class="form-horizontal" role="form">
+    <div class="taskItemData">
+        <form class="form-horizontal" role="form" action="do_actions" method="post">
             <div class="form-group">
                 <label for="inputItemName" class="col-sm-2">Task Name</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputItemName" placeholder="Enter name">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="inputItemCategory" class="col-sm-2">Task Category</label>
                 <div class="col-sm-10">
@@ -53,17 +64,5 @@
 </div>
 
 
-<table width="100%" border="1" align="center">
-    <tr bgcolor="#949494">
-        <th>Header Name</th>
-        <th>Header Value</th>
-    </tr>
-    <c:forEach items="${header.keySet()}" var="headerName">
-        <tr>
-            <td><c:out value="${headerName}"/></td>
-            <td><c:out value="${header.get(headerName)}"/></td>
-        </tr>
-    </c:forEach>
-</table>
 </body>
 </html>

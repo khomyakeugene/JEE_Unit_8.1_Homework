@@ -8,4 +8,13 @@
         This is JEE Unit 8.2 Homework
     </description>
 
+    <servlet>
+        <servlet-name>taskItemServlet</servlet-name>
+        <servlet-class>com.company.todo.servlets.TaskItemServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>taskItemServlet</servlet-name>
+        <url-pattern>/do_actions</url-pattern>
+    </servlet-mapping>
 </web-app>
