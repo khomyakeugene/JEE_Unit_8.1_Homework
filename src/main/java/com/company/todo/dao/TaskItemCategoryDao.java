@@ -11,7 +11,7 @@ import java.util.List;
 public interface TaskItemCategoryDao {
     void setServletContext(ServletContext servletContext);
 
-    TaskItemCategory saveTaskItemCategory(String name);
+    TaskItemCategory addTaskItemCategory(String name);
 
-    List<TaskItemCategory> readTaskItemCategoryList();
+    List<TaskItemCategory> findAllTaskItemCategories();
 }

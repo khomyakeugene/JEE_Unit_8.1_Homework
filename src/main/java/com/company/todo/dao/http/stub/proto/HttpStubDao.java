@@ -33,14 +33,6 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
         return getEntityName() + SET_VAR_SUFFIX;
     }
 
-    protected SortedSet<T> readDataItemSet() {
-        return (SortedSet<T>)getAttribute(getEntitySetVariableName());
-    }
-
-    protected List<T> readDataItemList() {
-        return new ArrayList<>(readDataItemSet());
-    }
-
     private void saveDataItemSet(SortedSet<T> sortedSet) {
         setAttribute(getEntitySetVariableName(), sortedSet);
     }
@@ -76,7 +68,17 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
         return dataItem;
     }
 
-    protected T createDataItem(T dataItem) {
+    protected SortedSet<T> readDataItemSet() {
+        SortedSet<T> result = (SortedSet<T>)getAttribute(getEntitySetVariableName());
+
+        return (result == null) ? new TreeSet<>() : result;
+    }
+
+    protected List<T> findAllDataItems() {
+        return new ArrayList<>(readDataItemSet());
+    }
+
+    protected T addDataItem(T dataItem) {
         dataItem.setId(generateId());
 
         return saveOrUpdate(dataItem);
@@ -114,4 +116,9 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
 
         return result;
     }
+
+    protected boolean deleteDataItem(T dataItem) {
+        return (dataItem != null) && deleteDataItem(dataItem.getId());
+    }
+
 }

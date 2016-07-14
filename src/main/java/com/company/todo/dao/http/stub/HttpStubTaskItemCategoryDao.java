@@ -12,12 +12,12 @@ import java.util.List;
 public class HttpStubTaskItemCategoryDao extends HttpStubUniqueNameDao<TaskItemCategory>
         implements TaskItemCategoryDao {
     @Override
-    public TaskItemCategory saveTaskItemCategory(String name) {
+    public TaskItemCategory addTaskItemCategory(String name) {
         return saveOrUpdate(name);
     }
 
     @Override
-    public List<TaskItemCategory> readTaskItemCategoryList() {
-        return readDataItemList();
+    public List<TaskItemCategory> findAllTaskItemCategories() {
+        return findAllDataItems();
     }
 }

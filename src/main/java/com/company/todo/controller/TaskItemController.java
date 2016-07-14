@@ -11,13 +11,13 @@ import java.util.List;
 public interface TaskItemController {
     void setServletContext(ServletContext servletContext);
 
-    TaskItem createTaskItem(TaskItem taskItem);
+    TaskItem addTaskItem(TaskItem taskItem);
 
-    TaskItem readTaskItem(int taskItemId);
+    TaskItem findTaskItemById(int taskItemId);
 
-    TaskItem updateTaskItem(int taskItemId, boolean isComplete);
+    TaskItem updTaskItem(int taskItemId, boolean isComplete);
 
-    boolean deleteTaskItem(int taskItemId);
+    boolean delTaskItem(int taskItemId);
 
-    List<TaskItem> readTaskItemList();
+    List<TaskItem> findAllTaskItems();
 }

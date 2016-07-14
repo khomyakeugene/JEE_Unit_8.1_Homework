@@ -1,5 +1,6 @@
 package com.company.todo.dao.http.stub;
 
+import com.company.todo.Util;
 import com.company.todo.dao.TaskItemCategoryDao;
 import com.company.todo.dao.TaskItemDao;
 import com.company.todo.model.TaskItem;
@@ -43,53 +44,65 @@ public class HttpStubTaskItemDaoTest {
 
     }
 
-    @Test//(timeout = 1000)
+    @Test(timeout = 1000)
     public void saveTaskItemCategory() throws Exception {
-        String taskItemCategoryName = Util.getRandomString();
-
-        List<TaskItemCategory> taskItemCategoryList = taskItemCategoryDao.readTaskItemCategoryList();
+        List<TaskItemCategory> taskItemCategoryList = taskItemCategoryDao.findAllTaskItemCategories();
         int listSize = (taskItemCategoryList == null) ? 0 : taskItemCategoryList.size();
 
         TaskItemCategory taskItemCategory =
-                taskItemCategoryDao.saveTaskItemCategory(taskItemCategoryName);
-        assertTrue(taskItemCategoryDao.readTaskItemCategoryList().size() == (listSize + 1));
-        assertTrue(taskItemCategoryDao.readTaskItemCategoryList().get(listSize).equals(taskItemCategory));
+                taskItemCategoryDao.addTaskItemCategory(Util.getRandomString());
+        assertTrue(taskItemCategoryDao.findAllTaskItemCategories().size() == (listSize + 1));
+        assertTrue(taskItemCategoryDao.findAllTaskItemCategories().get(listSize).equals(taskItemCategory));
     }
 
     @Test(timeout = 1000)
-    public void createReadUpdateTaskItem() throws Exception {
-        TaskItem taskItem1 = new TaskItem();
-        taskItem1.setName(Util.getRandomString());
-        taskItem1.getTaskItemCategory().setName(Util.getRandomString());
-        taskItem1 = taskItemDao.createTaskItem(taskItem1);
+    public void findAddUpdDelUpdateTaskItem() throws Exception {
+        List<TaskItem> taskItemList = taskItemDao.findAllTaskItems();
+        int listSize = (taskItemList == null) ? 0 : taskItemList.size();
 
-        TaskItem taskItem2 = new TaskItem();
-        taskItem2.setName(Util.getRandomString());
-        taskItem2.getTaskItemCategory().setName(Util.getRandomString());
-        taskItem2 = taskItemDao.createTaskItem(taskItem2);
+        TaskItem firstTaskItem = new TaskItem();
+        firstTaskItem.setName(Util.getRandomString());
+        firstTaskItem.getTaskItemCategory().setName(Util.getRandomString());
+        firstTaskItem = taskItemDao.addTaskItem(firstTaskItem);
 
-        int firstTaskItemId = taskItem1.getTaskItemId();
-        int secondTaskItemId = taskItem2.getTaskItemId();
-        assertTrue(firstTaskItemId != secondTaskItemId);
+        TaskItem secondTaskItem = new TaskItem();
+        secondTaskItem.setName(Util.getRandomString());
+        secondTaskItem.getTaskItemCategory().setName(Util.getRandomString());
+        secondTaskItem = taskItemDao.addTaskItem(secondTaskItem);
 
-        assertTrue(taskItemDao.readTaskItem(firstTaskItemId).equals(taskItem1));
-        assertTrue(taskItemDao.readTaskItem(secondTaskItemId).equals(taskItem2));
-        assertTrue(taskItemDao.readTaskItemList().size() == 2);
+        TaskItem thirdTaskItem = new TaskItem();
+        thirdTaskItem.setName(Util.getRandomString());
+        thirdTaskItem.getTaskItemCategory().setName(Util.getRandomString());
+        thirdTaskItem = taskItemDao.addTaskItem(thirdTaskItem);
 
-        taskItemDao.updateTaskItem(firstTaskItemId, true);
-        assertTrue(taskItemDao.readTaskItem(firstTaskItemId).isComplete());
-        taskItemDao.updateTaskItem(firstTaskItemId, false);
-        assertTrue(!taskItemDao.readTaskItem(firstTaskItemId).isComplete());
+        int firstTaskItemId = firstTaskItem.getTaskItemId();
+        int secondTaskItemId = secondTaskItem.getTaskItemId();
+        int thirdTaskItemId = thirdTaskItem.getTaskItemId();
+        assertTrue(firstTaskItemId != secondTaskItemId && firstTaskItemId != thirdTaskItemId &&
+                secondTaskItemId != thirdTaskItemId);
+
+        assertTrue(taskItemDao.findTaskItemById(firstTaskItemId).equals(firstTaskItem));
+        assertTrue(taskItemDao.findTaskItemById(secondTaskItemId).equals(secondTaskItem));
+        assertTrue(taskItemDao.findTaskItemById(thirdTaskItemId).equals(thirdTaskItem));
+        assertTrue(taskItemDao.findAllTaskItems().size() == (listSize + 3));
+
+        taskItemDao.updTaskItem(firstTaskItemId, true);
+        assertTrue(taskItemDao.findTaskItemById(firstTaskItemId).isComplete());
+        taskItemDao.updTaskItem(firstTaskItemId, false);
+        assertTrue(!taskItemDao.findTaskItemById(firstTaskItemId).isComplete());
+        taskItemDao.updTaskItem(thirdTaskItemId, true);
+        assertTrue(taskItemDao.findTaskItemById(thirdTaskItemId).isComplete());
+
+        taskItemDao.delTaskItem(firstTaskItem);
+        assertTrue(taskItemDao.findTaskItemById(firstTaskItemId) == null);
+        assertTrue(taskItemDao.findAllTaskItems().size() == (listSize + 2));
+
+        taskItemDao.delTaskItem(secondTaskItemId);
+        assertTrue(taskItemDao.findTaskItemById(secondTaskItemId) == null);
+        assertTrue(taskItemDao.findAllTaskItems().size() == (listSize + 1));
+
+        taskItemDao.delTaskItem(thirdTaskItem);
+        assertTrue(taskItemDao.findTaskItemById(thirdTaskItemId) == null);
+        assertTrue(taskItemDao.findAllTaskItems().size() == listSize);
     }
-
-    @Test
-    public void deleteTaskItem() throws Exception {
-
-    }
-
-    @Test
-    public void readTaskItemList() throws Exception {
-
-    }
-
 }

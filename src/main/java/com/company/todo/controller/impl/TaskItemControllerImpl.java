@@ -39,27 +39,27 @@ public class TaskItemControllerImpl implements TaskItemController {
     }
 
     @Override
-    public TaskItem createTaskItem(TaskItem taskItem) {
-        return taskItemDao.createTaskItem(taskItem);
+    public TaskItem addTaskItem(TaskItem taskItem) {
+        return taskItemDao.addTaskItem(taskItem);
     }
 
     @Override
-    public TaskItem readTaskItem(int taskItemId) {
-        return taskItemDao.readTaskItem(taskItemId);
+    public TaskItem findTaskItemById(int taskItemId) {
+        return taskItemDao.findTaskItemById(taskItemId);
     }
 
     @Override
-    public TaskItem updateTaskItem(int taskItemId, boolean isComplete) {
-        return taskItemDao.updateTaskItem(taskItemId, isComplete);
+    public TaskItem updTaskItem(int taskItemId, boolean isComplete) {
+        return taskItemDao.updTaskItem(taskItemId, isComplete);
     }
 
     @Override
-    public boolean deleteTaskItem(int taskItemId) {
-        return taskItemDao.deleteTaskItem(taskItemId);
+    public boolean delTaskItem(int taskItemId) {
+        return taskItemDao.delTaskItem(taskItemId);
     }
 
     @Override
-    public List<TaskItem> readTaskItemList() {
-        return taskItemDao.readTaskItemList();
+    public List<TaskItem> findAllTaskItems() {
+        return taskItemDao.findAllTaskItems();
     }
 }

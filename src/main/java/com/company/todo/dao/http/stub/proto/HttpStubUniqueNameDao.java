@@ -23,7 +23,7 @@ public class HttpStubUniqueNameDao<T extends DataItem> extends HttpStubDao<T> {
         if (result == null) {
             result = newObject();
             result .setName(name);
-            result = createDataItem(result);
+            result = addDataItem(result);
         }
 
         return result;

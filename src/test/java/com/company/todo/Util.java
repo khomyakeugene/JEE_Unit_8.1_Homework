@@ -1,4 +1,4 @@
-package com.company.todo.dao.http.stub;
+package com.company.todo;
 
 import java.util.Random;
 

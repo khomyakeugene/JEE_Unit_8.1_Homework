@@ -24,21 +24,21 @@ public class HttpStubTaskItemDao extends HttpStubDao<TaskItem> implements TaskIt
     }
 
     @Override
-    public TaskItem createTaskItem(TaskItem taskItem) {
-        taskItem.setTaskItemCategory(taskItemCategoryDao.saveTaskItemCategory(
+    public TaskItem addTaskItem(TaskItem taskItem) {
+        taskItem.setTaskItemCategory(taskItemCategoryDao.addTaskItemCategory(
                 taskItem.getTaskItemCategory().getName()));
 
-        return createDataItem(taskItem);
+        return addDataItem(taskItem);
     }
 
     @Override
-    public TaskItem readTaskItem(int taskItemId) {
+    public TaskItem findTaskItemById(int taskItemId) {
         return readDataItem(taskItemId);
     }
 
     @Override
-    public TaskItem updateTaskItem(int taskItemId, boolean isComplete) {
-        TaskItem taskItem = readTaskItem(taskItemId);
+    public TaskItem updTaskItem(int taskItemId, boolean isComplete) {
+        TaskItem taskItem = findTaskItemById(taskItemId);
         if (taskItem != null) {
             taskItem.setComplete(isComplete);
             taskItem = updateDataItem(taskItem);
@@ -48,12 +48,17 @@ public class HttpStubTaskItemDao extends HttpStubDao<TaskItem> implements TaskIt
     }
 
     @Override
-    public boolean deleteTaskItem(int taskItemId) {
+    public boolean delTaskItem(int taskItemId) {
         return deleteDataItem(taskItemId);
     }
 
     @Override
-    public List<TaskItem> readTaskItemList() {
-        return readDataItemList();
+    public boolean delTaskItem(TaskItem taskItem) {
+        return deleteDataItem(taskItem);
+    }
+
+    @Override
+    public List<TaskItem> findAllTaskItems() {
+        return findAllDataItems();
     }
 }
