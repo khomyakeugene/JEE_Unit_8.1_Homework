@@ -1,4 +1,4 @@
-package com.company.todo.dao.http.stub.proto;
+package com.company.util;
 
 import java.lang.reflect.ParameterizedType;
 

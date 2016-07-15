@@ -1,4 +1,4 @@
-package com.company.todo.dao.http.stub;
+package com.company.todo.dao.stub.http;
 
 import org.junit.BeforeClass;
 
@@ -6,7 +6,7 @@ import org.junit.BeforeClass;
 /**
  * Created by Yevhen on 13.07.2016.
  */
-public class HttpStubTaskItemDaoTest extends com.company.todo.dao.TaskItemDaoTest {
+public class StubTaskItemDaoTest extends com.company.todo.dao.TaskItemDaoTest {
     private final static String APPLICATION_CONTEXT_NAME = "todo-controller-context.xml";
 
     @BeforeClass

@@ -21,7 +21,6 @@ public class TaskItemControllerImplTest {
 
     private static void initDataSource() throws Exception {
         taskItemController = TaskItemControllerImpl.getInstance();
-        taskItemController.setServletContext(mockServletContext);
     }
 
     @BeforeClass

@@ -1,26 +1,19 @@
-package com.company.todo.dao.http.stub;
+package com.company.todo.dao.stub;
 
 import com.company.todo.dao.TaskItemDao;
-import com.company.todo.dao.http.stub.proto.HttpStubDao;
+import com.company.todo.dao.stub.proto.StubDao;
 import com.company.todo.model.TaskItem;
 
-import javax.servlet.ServletContext;
 import java.util.List;
 
 /**
  * Created by Yevhen on 13.07.2016.
  */
-public class HttpStubTaskItemDao extends HttpStubDao<TaskItem> implements TaskItemDao {
-    private HttpStubTaskItemCategoryDao taskItemCategoryDao;
+public class StubTaskItemDao extends StubDao<TaskItem> implements TaskItemDao {
+    private StubTaskItemCategoryDao taskItemCategoryDao;
 
-    public void setTaskItemCategoryDao(HttpStubTaskItemCategoryDao taskItemCategoryDao) {
+    public void setTaskItemCategoryDao(StubTaskItemCategoryDao taskItemCategoryDao) {
         this.taskItemCategoryDao = taskItemCategoryDao;
-    }
-
-    @Override
-    public void setServletContext(ServletContext servletContext) {
-        super.setServletContext(servletContext);
-        taskItemCategoryDao.setServletContext(servletContext);
     }
 
     @Override

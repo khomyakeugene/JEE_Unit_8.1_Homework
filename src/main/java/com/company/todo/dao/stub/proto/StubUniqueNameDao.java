@@ -1,4 +1,4 @@
-package com.company.todo.dao.http.stub.proto;
+package com.company.todo.dao.stub.proto;
 
 import com.company.todo.model.proto.DataItem;
 
@@ -9,7 +9,7 @@ import java.util.SortedSet;
  * Created by Yevhen on 13.07.2016.
  */
 
-public class HttpStubUniqueNameDao<T extends DataItem> extends HttpStubDao<T> {
+public class StubUniqueNameDao<T extends DataItem> extends StubDao<T> {
     protected T saveOrUpdate(String name) {
         T result = null;
 

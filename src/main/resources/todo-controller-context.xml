@@ -4,11 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean class="com.company.todo.dao.http.stub.HttpStubTaskItemCategoryDao" id="taskItemCategoryDao">
+    <bean class="com.company.todo.dao.stub.StubTaskItemCategoryDao" id="taskItemCategoryDao">
 
     </bean>
 
-    <bean class="com.company.todo.dao.http.stub.HttpStubTaskItemDao" id="taskItemDao">
+    <bean class="com.company.todo.dao.stub.StubTaskItemDao" id="taskItemDao">
         <property name="taskItemCategoryDao" ref="taskItemCategoryDao"/>
     </bean>
 

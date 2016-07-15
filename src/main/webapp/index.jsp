@@ -46,15 +46,15 @@
     <div class="taskItemData">
         <form class="form-horizontal" role="form" action="add_task" method="post">
             <div class="form-group">
-                <label for="inputItemName" class="col-sm-2">Task Name</label>
+                <label for="taskItemName" class="col-sm-2">Task Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputItemName" placeholder="Enter name">
+                    <input type="text" class="form-control" id="taskItemName" placeholder="Enter name">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputItemCategory" class="col-sm-2">Task Category</label>
+                <label for="taskItemCategoryName" class="col-sm-2">Task Category</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputItemCategory" placeholder="Enter category">
+                    <input type="text" class="form-control" id="taskItemCategoryName" placeholder="Enter category">
                 </div>
             </div>
 

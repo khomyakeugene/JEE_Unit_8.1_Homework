@@ -7,7 +7,6 @@ import com.company.todo.model.TaskItem;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import javax.servlet.ServletContext;
 import java.util.List;
 
 /**
@@ -34,11 +33,6 @@ public class TaskItemControllerImpl extends Controller implements TaskItemContro
 
     public void setTaskItemDao(TaskItemDao taskItemDao) {
         this.taskItemDao = taskItemDao;
-    }
-
-    @Override
-    public void setServletContext(ServletContext servletContext) {
-        taskItemDao.setServletContext(servletContext);
     }
 
     @Override

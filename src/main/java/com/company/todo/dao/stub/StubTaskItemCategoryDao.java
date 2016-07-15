@@ -1,7 +1,7 @@
-package com.company.todo.dao.http.stub;
+package com.company.todo.dao.stub;
 
 import com.company.todo.dao.TaskItemCategoryDao;
-import com.company.todo.dao.http.stub.proto.HttpStubUniqueNameDao;
+import com.company.todo.dao.stub.proto.StubUniqueNameDao;
 import com.company.todo.model.TaskItemCategory;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Yevhen on 13.07.2016.
  */
-public class HttpStubTaskItemCategoryDao extends HttpStubUniqueNameDao<TaskItemCategory>
+public class StubTaskItemCategoryDao extends StubUniqueNameDao<TaskItemCategory>
         implements TaskItemCategoryDao {
     @Override
     public TaskItemCategory addTaskItemCategory(String name) {

@@ -6,7 +6,6 @@ import com.company.todo.model.TaskItemCategory;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.mock.web.MockServletContext;
 
 import java.util.List;
 
@@ -16,7 +15,6 @@ import static org.junit.Assert.assertTrue;
  * Created by Yevhen on 14.07.2016.
  */
 public abstract class TaskItemDaoTest {
-    private static MockServletContext mockServletContext = new MockServletContext();
     private static TaskItemCategoryDao taskItemCategoryDao;
     private static TaskItemDao taskItemDao;
 
@@ -24,14 +22,10 @@ public abstract class TaskItemDaoTest {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext(configLocation);
 
         taskItemCategoryDao = applicationContext.getBean(TaskItemCategoryDao.class);
-        taskItemCategoryDao.setServletContext(mockServletContext);
-
         taskItemDao = applicationContext.getBean(TaskItemDao.class);
-        taskItemDao.setServletContext(mockServletContext);
-
     }
 
-    @Test(timeout = 1000)
+    @Test//(timeout = 1000)
     public void saveTaskItemCategory() throws Exception {
         List<TaskItemCategory> taskItemCategoryList = taskItemCategoryDao.findAllTaskItemCategories();
         int listSize = (taskItemCategoryList == null) ? 0 : taskItemCategoryList.size();

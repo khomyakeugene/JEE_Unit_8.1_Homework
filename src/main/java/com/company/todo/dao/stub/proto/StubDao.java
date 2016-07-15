@@ -1,40 +1,25 @@
-package com.company.todo.dao.http.stub.proto;
+package com.company.todo.dao.stub.proto;
 
 import com.company.todo.model.proto.DataItem;
 import com.company.util.DataIntegrityException;
+import com.company.util.GenericHolder;
 
-import javax.servlet.ServletContext;
 import java.util.*;
 
 /**
- * Created by Yevhen on 13.07.2016.
+ * Created by Yevhen on 15.07.2016.
  */
-public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
-    private static final String SET_VAR_SUFFIX = "Set";
+public class StubDao<T extends DataItem> extends GenericHolder<T> {
     private static final String CANNOT_FIND_DATA_ITEM_PATTERN = "<%s>: Cannot find item with id <%d>!";
 
-    private ServletContext servletContext;
+    private SortedSet<T> dataItemSet = new TreeSet<>();
 
-    public void setServletContext(ServletContext servletContext) {
-        this.servletContext = servletContext;
+    protected SortedSet<T> readDataItemSet() {
+        return dataItemSet;
     }
 
-    private Object getAttribute(String attributeName) {
-        return (servletContext == null) ? null : servletContext.getAttribute(attributeName);
-    }
-
-    private void setAttribute(String attributeName, Object attributeValue) {
-        if (servletContext != null) {
-            servletContext.setAttribute(attributeName, attributeValue);
-        }
-    }
-
-    private String getEntitySetVariableName() {
-        return getEntityName() + SET_VAR_SUFFIX;
-    }
-
-    private void saveDataItemSet(SortedSet<T> sortedSet) {
-        setAttribute(getEntitySetVariableName(), sortedSet);
+    protected void saveDataItemSet(SortedSet<T> dataItemSet) {
+        this.dataItemSet = dataItemSet;
     }
 
     private int generateId() {
@@ -83,12 +68,6 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
         return saveOrUpdate(dataItem);
     }
 
-    protected SortedSet<T> readDataItemSet() {
-        SortedSet<T> result = (SortedSet<T>)getAttribute(getEntitySetVariableName());
-
-        return (result == null) ? new TreeSet<>() : result;
-    }
-
     protected List<T> findAllDataItems() {
         return new ArrayList<>(readDataItemSet());
     }
@@ -135,5 +114,4 @@ public class HttpStubDao<T extends DataItem> extends GenericHolder<T> {
     protected boolean deleteDataItem(T dataItem) {
         return (dataItem != null) && deleteDataItem(dataItem.getId());
     }
-
 }
