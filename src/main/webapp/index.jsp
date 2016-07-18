@@ -48,10 +48,11 @@
 
         .dangerous {
             color: red;
+            background-color: rgba(233, 150, 122, 0.45);
         }
 
         .table-background-color {
-            background-color: #f7e1b5;
+            background-color: rgba(247, 225, 181, 0.64);
         }
     </style>
 
@@ -71,6 +72,8 @@
     </div>
 
     <form action="do_action" method="post">
+        <input type="submit" name="action" value="addTask" hidden>
+
         <!-- The Task List -->
         <div class="container">
             <table class="table" id="todoItems">
@@ -104,7 +107,7 @@
                     <label for="taskItemName" class="col-sm-2">Task Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="taskItemName"
-                               name="task_item_name" placeholder="Enter name" required>
+                               name="task_item_name" placeholder="Enter name" required autofocus>
                     </div>
                 </div>
 
@@ -122,9 +125,7 @@
             </div>
         </div>
     </form>
-
 </div>
-
 
 </body>
 </html>

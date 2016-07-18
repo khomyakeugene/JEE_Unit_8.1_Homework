@@ -17,7 +17,8 @@ import java.util.Optional;
 public class ActionServlet extends TaskItemServlet {
     private static final String TASK_ITEM_NAME_PARAMETER_NAME = "task_item_name";
     private static final String TASK_ITEM_CATEGORY_NAME_PARAMETER_NAME = "task_item_category_name";
-    private static final String TASK_COMPLETE_PARAMETER_NAME = "completeTask";
+    private static final String COMPLETE_TASK_PARAMETER_NAME = "completeTask";
+    private static final String DELETE_TASK_PARAMETER_NAME = "deleteTask";
     private static final String ACTION_PARAMETER_NAME = "action";
     private static final String ACTION_PARAMETER_ADD_TASK_VALUE = "addTask";
     private static final String ACTION_PARAMETER_UPDATE_TASKS_VALUE = "updateTasks";
@@ -28,7 +29,7 @@ public class ActionServlet extends TaskItemServlet {
         // All the list
         List<TaskItem> taskItemList = taskItemController.findAllTaskItems();
 
-        String[] completeStates = request.getParameterValues(TASK_COMPLETE_PARAMETER_NAME);
+        String[] completeStates = request.getParameterValues(COMPLETE_TASK_PARAMETER_NAME);
         if (completeStates != null) {
             for (String completeState : completeStates) {
                 // Save completed task
@@ -47,8 +48,23 @@ public class ActionServlet extends TaskItemServlet {
         taskItemList.forEach(ti -> taskItemController.updTaskItem(ti.getTaskItemId(), false));
     }
 
+    private void deleteTasks(HttpServletRequest request) {
+        TaskItemController taskItemController = getTaskItemController();
+
+        String[] deleteStates = request.getParameterValues(DELETE_TASK_PARAMETER_NAME);
+        if (deleteStates != null) {
+            for (String deleteState : deleteStates) {
+                taskItemController.delTaskItem(Integer.parseInt(deleteState));
+            }
+        }
+
+    }
+
     private void updateTasks(HttpServletRequest request) {
+        // It is important to firstly update the tasks because only completed task could be deleted
         updateTaskCompleteness(request);
+
+        deleteTasks(request);
     }
 
     private void addTask(HttpServletRequest request) {
@@ -66,6 +82,8 @@ public class ActionServlet extends TaskItemServlet {
 
     @Override
     protected void responseAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter(ACTION_PARAMETER_NAME);
+
         switch (request.getParameter(ACTION_PARAMETER_NAME)) {
             case ACTION_PARAMETER_UPDATE_TASKS_VALUE:
                 updateTasks(request);
