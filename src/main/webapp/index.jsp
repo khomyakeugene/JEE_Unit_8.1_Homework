@@ -74,8 +74,8 @@
     <form action="do_action" method="post">
         <input type="submit" name="action" value="addTask" hidden>
 
-        <!-- The Task List -->
         <div class="container">
+            <!-- The Task List -->
             <table class="table" id="todoItems">
                 <tr>
                     <th>Name</th>
@@ -96,7 +96,9 @@
 
             <!-- Update Button -->
             <div class="container">
-                <button type="submit" class="button blue" name="action" value="updateTasks">Update Tasks</button>
+                <button type="submit" class="button blue" name="action" value="updateTasks" formnovalidate>
+                    Update Tasks
+                </button>
             </div>
 
             <hr/>
