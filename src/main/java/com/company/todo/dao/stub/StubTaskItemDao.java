@@ -61,6 +61,12 @@ public class StubTaskItemDao extends StubDao<TaskItem> implements TaskItemDao {
 
     @Override
     public List<TaskItem> findAllTaskItems() {
+        /*
+        TaskItem firstTaskItem = new TaskItem();
+        firstTaskItem.setName("Aaaaa");
+        firstTaskItem.getTaskItemCategory().setName("bbbbb");
+        addTaskItem(firstTaskItem);
+*/
         return findAllDataItems();
     }
 }

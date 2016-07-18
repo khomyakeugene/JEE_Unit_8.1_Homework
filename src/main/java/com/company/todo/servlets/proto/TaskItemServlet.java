@@ -1,8 +1,7 @@
 package com.company.todo.servlets.proto;
 
 import com.company.todo.controller.TaskItemController;
-
-import javax.servlet.ServletException;
+import com.company.todo.controller.impl.TaskItemControllerImpl;
 
 /**
  * Created by Yevhen on 14.07.2016.
@@ -10,15 +9,11 @@ import javax.servlet.ServletException;
 public abstract class TaskItemServlet  extends CallerPageReturnServlet  {
     private TaskItemController taskItemController;
 
-    public TaskItemController getTaskItemController() {
+    protected TaskItemController getTaskItemController() {
+        if (taskItemController == null) {
+            taskItemController = TaskItemControllerImpl.getInstance();
+        }
+
         return taskItemController;
-    }
-
-    @Override
-    public void init() throws ServletException {
-        super.init();
-
-        // Get Controller
-        //taskItemController = TaskItemControllerImpl.getInstance();
     }
 }
