@@ -6,7 +6,6 @@ import com.company.todo.model.TaskItem;
 import com.company.util.DataIntegrityException;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.mock.web.MockServletContext;
 
 import java.util.List;
 
@@ -16,7 +15,6 @@ import static org.junit.Assert.assertTrue;
  * Created by Yevhen on 14.07.2016.
  */
 public class TaskItemControllerImplTest {
-    private static MockServletContext mockServletContext = new MockServletContext();
     private static TaskItemController taskItemController;
 
     private static void initDataSource() throws Exception {
