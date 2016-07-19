@@ -15,7 +15,7 @@ import java.util.List;
 public class TaskItemControllerImpl extends Controller implements TaskItemController {
     private final static String IT_IS_PROHIBITED_TO_DELETE_UNCOMPLETED_TASK_PATTERN =
             "It is prohibited to delete uncompleted task with id <%d>";
-    private final static String TODO_CONTROLLER_CONTEXT_NAME = "todo-controller-context.xml";
+    private final static String TODO_CONTROLLER_CONTEXT_NAME = "task-item-controller-context.xml";
 
     private static TaskItemController taskItemController;
 
