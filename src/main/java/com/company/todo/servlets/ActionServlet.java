@@ -3,6 +3,7 @@ package com.company.todo.servlets;
 import com.company.todo.controller.TaskItemController;
 import com.company.todo.model.TaskItem;
 import com.company.todo.servlets.proto.TaskItemServlet;
+import com.company.util.DataIntegrityException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ public class ActionServlet extends TaskItemServlet {
     private static final String ACTION_PARAMETER_NAME = "action";
     private static final String ACTION_PARAMETER_ADD_TASK_VALUE = "addTask";
     private static final String ACTION_PARAMETER_UPDATE_TASKS_VALUE = "updateTasks";
+    private static final String ERROR_MESSAGE_ATTRIBUTE_NAME = "errorMessage";
 
     private void updateTaskCompleteness(HttpServletRequest request) {
         TaskItemController taskItemController = getTaskItemController();
@@ -82,16 +84,25 @@ public class ActionServlet extends TaskItemServlet {
 
     @Override
     protected void responseAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter(ACTION_PARAMETER_NAME);
+        String errorMessage = null;
 
-        switch (request.getParameter(ACTION_PARAMETER_NAME)) {
-            case ACTION_PARAMETER_UPDATE_TASKS_VALUE:
-                updateTasks(request);
-                break;
+        try {
+            switch (request.getParameter(ACTION_PARAMETER_NAME)) {
+                case ACTION_PARAMETER_UPDATE_TASKS_VALUE:
+                    updateTasks(request);
+                    break;
 
-            case ACTION_PARAMETER_ADD_TASK_VALUE:
-                updateTaskCompletenessAndAddTask(request);
-                break;
+                case ACTION_PARAMETER_ADD_TASK_VALUE:
+                    updateTaskCompletenessAndAddTask(request);
+                    break;
+            }
+
+        } catch (DataIntegrityException e) {
+            // Save error message
+            errorMessage = e.getMessage();
         }
+
+        // Store error message; next should be displayed in the target JSP
+        request.getSession().setAttribute(ERROR_MESSAGE_ATTRIBUTE_NAME, errorMessage);
     }
 }

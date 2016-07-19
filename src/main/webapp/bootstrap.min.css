@@ -5599,7 +5599,7 @@ button.close {
     padding: 5px 0;
     margin-top: -3px
 }
-.tooltip.right {
+.tooltip.horizontal-container-right-part {
     padding: 0 5px;
     margin-left: 3px
 }
@@ -5607,7 +5607,7 @@ button.close {
     padding: 5px 0;
     margin-top: 3px
 }
-.tooltip.left {
+.tooltip.horizontal-container-left-part {
     padding: 0 5px;
     margin-left: -3px
 }
@@ -5646,14 +5646,14 @@ button.close {
     border-width: 5px 5px 0;
     border-top-color: #000
 }
-.tooltip.right .tooltip-arrow {
+.tooltip.horizontal-container-right-part .tooltip-arrow {
     top: 50%;
     left: 0;
     margin-top: -5px;
     border-width: 5px 5px 5px 0;
     border-right-color: #000
 }
-.tooltip.left .tooltip-arrow {
+.tooltip.horizontal-container-left-part .tooltip-arrow {
     top: 50%;
     right: 0;
     margin-top: -5px;
@@ -5701,13 +5701,13 @@ button.close {
 .popover.top {
     margin-top: -10px
 }
-.popover.right {
+.popover.horizontal-container-right-part {
     margin-left: 10px
 }
 .popover.bottom {
     margin-top: 10px
 }
-.popover.left {
+.popover.horizontal-container-left-part {
     margin-left: -10px
 }
 .popover-title {
@@ -5754,7 +5754,7 @@ button.close {
     border-top-color: #fff;
     border-bottom-width: 0
 }
-.popover.right>.arrow {
+.popover.horizontal-container-right-part >.arrow {
     top: 50%;
     left: -11px;
     margin-top: -11px;
@@ -5762,7 +5762,7 @@ button.close {
     border-right-color: rgba(0, 0, 0, .25);
     border-left-width: 0
 }
-.popover.right>.arrow:after {
+.popover.horizontal-container-right-part >.arrow:after {
     bottom: -10px;
     left: 1px;
     content: " ";
@@ -5784,7 +5784,7 @@ button.close {
     border-top-width: 0;
     border-bottom-color: #fff
 }
-.popover.left>.arrow {
+.popover.horizontal-container-left-part >.arrow {
     top: 50%;
     right: -11px;
     margin-top: -11px;
@@ -5792,7 +5792,7 @@ button.close {
     border-left-color: #999;
     border-left-color: rgba(0, 0, 0, .25)
 }
-.popover.left>.arrow:after {
+.popover.horizontal-container-left-part >.arrow:after {
     right: 1px;
     bottom: -10px;
     content: " ";
@@ -5838,14 +5838,14 @@ button.close {
 .carousel-inner>.prev {
     left: -100%
 }
-.carousel-inner>.next.left,
-.carousel-inner>.prev.right {
+.carousel-inner>.next.horizontal-container-left-part,
+.carousel-inner>.prev.horizontal-container-right-part {
     left: 0
 }
-.carousel-inner>.active.left {
+.carousel-inner>.active.horizontal-container-left-part {
     left: -100%
 }
-.carousel-inner>.active.right {
+.carousel-inner>.active.horizontal-container-right-part {
     left: 100%
 }
 .carousel-control {
@@ -5861,7 +5861,7 @@ button.close {
     filter: alpha(opacity=50);
     opacity: .5
 }
-.carousel-control.left {
+.carousel-control.horizontal-container-left-part {
     background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .5) 0, rgba(0, 0, 0, .0001) 100%);
     background-image: -o-linear-gradient(left, rgba(0, 0, 0, .5) 0, rgba(0, 0, 0, .0001) 100%);
     background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .0001)));
@@ -5869,7 +5869,7 @@ button.close {
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
     background-repeat: repeat-x
 }
-.carousel-control.right {
+.carousel-control.horizontal-container-right-part {
     right: 0;
     left: auto;
     background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .0001) 0, rgba(0, 0, 0, .5) 100%);
