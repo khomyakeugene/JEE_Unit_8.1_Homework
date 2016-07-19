@@ -3,7 +3,10 @@
 <html>
 <head>
     <title>To do list</title>
-        <link rel="stylesheet" href="buttons.css">
+
+    <link rel="stylesheet" href="button.css">
+    <link rel="stylesheet" href="table.css">
+
     <style>
         .navbar-fixed-top-reverse-colour {
             position: relative;
@@ -24,28 +27,12 @@
             margin-bottom: 20px;
             font-family: Arial, serif;
         }
-        table {
-            border-spacing: 5px;
-            width: 100%;
-            max-width: 100%;
-            margin-bottom: 20px;
-            text-align: left;
-            font-family: Arial, serif;
-        }
-        table, th, td {
-            border: 1px solid #afafaf;
-            border-collapse: collapse;
-            padding: 7px;
-        }
         .dangerous-color, .dangerous {
             font-weight: bold;
             color: red;
         }
         .dangerous {
             background-color: rgba(233, 150, 122, 0.45);
-        }
-        .table-background-color {
-            background-color: rgba(255, 233, 192, 0.49);
         }
         .horizontal-container-space-between {
             display: flex;
@@ -57,21 +44,26 @@
             margin-bottom: 20px;
             font-family: Arial, serif;
         }
+
         .horizontal-container-flex-start {
             display: flex;
             padding-top: 10px;
             padding-bottom: 10px;
             font-family: Arial, serif;
         }
+
         .horizontal-container-left-part {
             width: 200px;
         }
+
         .horizontal-container-right-part {
             width: 100%;
         }
+
         .form-label {
             font-weight: bold;
         }
+
         .form-control {
             border-radius: 5px;
             padding: 7px;
