@@ -3,56 +3,8 @@
 <html>
 <head>
     <title>To do list</title>
-    <!--
-        <link rel="stylesheet" href="styles.css">
-    -->
+        <link rel="stylesheet" href="buttons.css">
     <style>
-        .button {
-            display: inline-block;
-            zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
-            *display: inline;
-            vertical-align: baseline;
-            margin: 0 2px;
-            outline: none;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            font: 14px/100% Arial, Helvetica, sans-serif;
-            padding: .5em 2em .55em;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
-            -webkit-border-radius: .5em;
-            -moz-border-radius: .5em;
-            border-radius: .5em;
-            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
-            -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
-        }
-        .button:hover {
-            text-decoration: none;
-        }
-        .button:active {
-            position: relative;
-            top: 1px;
-        }
-        .blue {
-            color: #d9eef7;
-            border: solid 1px #0076a3;
-            background: #0095cd;
-            background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
-            background: -moz-linear-gradient(top, #00adee, #0078a5);
-        }
-        .blue:hover {
-            background: #007ead;
-            background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
-            background: -moz-linear-gradient(top, #0095cc, #00678e);
-        }
-
-        .blue:active {
-            color: #80bed6;
-            background: -webkit-gradient(linear, left top, left bottom, from(#0078a5), to(#00adee));
-            background: -moz-linear-gradient(top, #0078a5, #00adee);
-        }
-
         .navbar-fixed-top-reverse-colour {
             position: relative;
             top: 0;
@@ -67,12 +19,8 @@
         }
         .container {
             position: relative;
-            top: auto;
             padding-right: 15px;
             padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
-            border-radius: 6px;
             margin-bottom: 20px;
             font-family: Arial, serif;
         }
@@ -97,7 +45,7 @@
             background-color: rgba(233, 150, 122, 0.45);
         }
         .table-background-color {
-            background-color: rgba(247, 225, 181, 0.64);
+            background-color: rgba(255, 233, 192, 0.49);
         }
         .horizontal-container-space-between {
             display: flex;
@@ -106,9 +54,6 @@
             justify-content: space-between;
             padding-right: 15px;
             padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
-            border-radius: 6px;
             margin-bottom: 20px;
             font-family: Arial, serif;
         }
