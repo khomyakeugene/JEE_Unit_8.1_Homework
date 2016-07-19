@@ -1,0 +1,116 @@
+.button {
+    display: inline-block;
+    zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+    *display: inline;
+    vertical-align: baseline;
+    margin: 0 2px;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: 14px/100% Arial, Helvetica, sans-serif;
+    padding: .5em 2em .55em;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    border-radius: .3em;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+}
+.button:hover {
+    text-decoration: none;
+}
+.button:active {
+    position: relative;
+    top: 1px;
+}
+.blue {
+    color: #d9eef7;
+    border: solid 1px #0076a3;
+    background: #0095cd;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+    background: -moz-linear-gradient(top, #00adee, #0078a5);
+}
+.blue:hover {
+    background: #007ead;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+    background: -moz-linear-gradient(top, #0095cc, #00678e);
+}
+.blue:active {
+    color: #80bed6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0078a5), to(#00adee));
+    background: -moz-linear-gradient(top, #0078a5, #00adee);
+}
+table {
+    border-spacing: 5px;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    text-align: left;
+    font-family: Arial, serif;
+}
+table, th, td {
+    border: 1px solid #afafaf;
+    border-collapse: collapse;
+    padding: 7px;
+}
+.table-background-color {
+    background-color: rgba(255, 233, 192, 0.49);
+}
+.navbar-fixed-top-reverse-colour {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-left: 0;
+    width: 100%;
+    border-width: 0 0 1px;
+    background-color: black;
+    color: #d3d3d3;
+    padding: 20px;
+    font-family: Helvetica, serif
+}
+.container {
+    position: relative;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    font-family: Arial, serif;
+}
+.dangerous-color, .dangerous {
+    font-weight: bold;
+    color: red;
+}
+.dangerous {
+    background-color: rgba(233, 150, 122, 0.45);
+}
+.horizontal-container-space-between {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    font-family: Arial, serif;
+}
+.horizontal-container-flex-start {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: Arial, serif;
+}
+.horizontal-container-left-part {
+    width: 200px;
+}
+.horizontal-container-right-part {
+    width: 100%;
+}
+.form-label {
+    font-weight: bold;
+}
+.form-control {
+    border-radius: 5px;
+    padding: 7px;
+    width: 100%;
+}

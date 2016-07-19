@@ -4,73 +4,7 @@
 <head>
     <title>To do list</title>
 
-    <link rel="stylesheet" href="button.css">
-    <link rel="stylesheet" href="table.css">
-
-    <style>
-        .navbar-fixed-top-reverse-colour {
-            position: relative;
-            top: 0;
-            left: 0;
-            margin-left: 0;
-            width: 100%;
-            border-width: 0 0 1px;
-            background-color: black;
-            color: #d3d3d3;
-            padding: 20px;
-            font-family: Helvetica, serif
-        }
-        .container {
-            position: relative;
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-bottom: 20px;
-            font-family: Arial, serif;
-        }
-        .dangerous-color, .dangerous {
-            font-weight: bold;
-            color: red;
-        }
-        .dangerous {
-            background-color: rgba(233, 150, 122, 0.45);
-        }
-        .horizontal-container-space-between {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-bottom: 20px;
-            font-family: Arial, serif;
-        }
-
-        .horizontal-container-flex-start {
-            display: flex;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            font-family: Arial, serif;
-        }
-
-        .horizontal-container-left-part {
-            width: 200px;
-        }
-
-        .horizontal-container-right-part {
-            width: 100%;
-        }
-
-        .form-label {
-            font-weight: bold;
-        }
-
-        .form-control {
-            border-radius: 5px;
-            padding: 7px;
-            width: 100%;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 
     <jsp:useBean class="com.company.todo.data.TaskItemListReader" id="taskItemListReader"
                  scope="application"/>
