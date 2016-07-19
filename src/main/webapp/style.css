@@ -25,9 +25,6 @@
     position: relative;
     top: 1px;
 }
-.button:disabled {
-    cursor: auto;
-}
 .blue {
     color: #d9eef7;
     border: solid 1px #0076a3;
@@ -46,11 +43,13 @@
     background: -moz-linear-gradient(top, #0078a5, #00adee);
 }
 .blue:disabled {
+    cursor: auto;
     color: #e2e2e2;
     border: solid 1px #4b4b4b;
     background: -webkit-gradient(linear, left top, left bottom, from(#919191), to(#989898));
     background: -moz-linear-gradient(top, #6b6b6b, #c7c7c7);
 }
+
 table {
     border-spacing: 5px;
     width: 100%;
