@@ -25,7 +25,7 @@ public abstract class TaskItemDaoTest {
         taskItemDao = applicationContext.getBean(TaskItemDao.class);
     }
 
-    @Test//(timeout = 1000)
+    @Test(timeout = 1000)
     public void saveTaskItemCategory() throws Exception {
         List<TaskItemCategory> taskItemCategoryList = taskItemCategoryDao.findAllTaskItemCategories();
         int listSize = (taskItemCategoryList == null) ? 0 : taskItemCategoryList.size();
