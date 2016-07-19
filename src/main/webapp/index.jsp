@@ -47,7 +47,8 @@
             <!-- Update Button -->
             <div class="horizontal-container-space-between">
                 <div>
-                    <button type="submit" class="button blue" name="action" value="updateTasks" formnovalidate>
+                    <button type="submit" class="button blue" name="action" value="updateTasks" formnovalidate
+                    <c:if test="${taskItemListReader.taskItemList.size() == 0}">disabled</c:if>>
                         Update Tasks
                     </button>
                 </div>
